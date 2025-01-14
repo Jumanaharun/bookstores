@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--s1-->
+	<title>Responsive Online Bookstore</title>
+
+	<!-- s2) stylesheet -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<nav> <!--s3-->
+		<div class="container nav__container">
+
+			<!--link of logo leading to index page-->
+			<h1 class="nav__logo">The Book Buffet</h1>
+			<ul class="nav__items">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="shop.html">Catalogue</a></li>
+				<li><a href="cart.html">Cart</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="contact.html">Contact</a></li>
+
+				<div class="nav__sign-in" style="display: block;"><li><a href="login.html">Log in</a></li></div>
+
+				<!--user_profile after signed in-->
+				<li class="nav__profile" style="display: none; ">
+					<div class="user__profile">
+						<img src="images/profile1.png">
+					</div>
+					<!-- ul for dropdown options when clicking to profile avatar -->
+						<ul>
+							<li><a href="dashboard.html">Dashboard</a></li>
+							<li><a href="logout.html">Log out</a></li>
+						</ul>
+				</li>
+				
+			</ul>
+			<button id="open__nav-btn"></button>
+			<button id="close__nav-btn"></button>
+		</div>
+	</nav>
+
+	<div class="main">
+		<div class="main_tag">
+			<h1>Welcome to<br><span>BookStore</span></h1>
+			<p>
+				Case Closed, also known as Detective Conan, is a Japanese detective manga series written and illustrated by Gosho Aoyama. It has been serialized in Shogakukan's shōnen manga magazine Weekly Shōnen Sunday since January 1994; its chapters are collected in 106 tankōbon volumes as of October 2024.
+			</p>
+
+		</div>
+	
+	</div>
+
+</body>
+</html>
+
+<script>
+    // Simulate a user login status for demonstration purposes (use backend logic for real-world use)
+    const isLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+    const isAdmin = <?php echo isset($_SESSION['is_admin']) && $_SESSION['is_admin'] ? 'true' : 'false'; ?>;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Select elements
+        const signinElement = document.querySelector('.nav__signin');
+        const profileElement = document.querySelector('.nav__profile');
+        const adminPanelElement = document.querySelector('.nav__admin-panel');
+
+        // Toggle visibility based on login state and role
+        if (isLoggedIn) {
+            signinElement.style.display = 'none';
+            profileElement.style.display = 'block';
+            if (isAdmin) {
+                adminPanelElement.style.display = 'block'; // Show Admin Panel link
+            } else {
+                adminPanelElement.style.display = 'none'; // Hide Admin Panel link
+            }
+        } else {
+            signinElement.style.display = 'block';
+            profileElement.style.display = 'none';
+            adminPanelElement.style.display = 'none';
+        }
+    });
+</script>
+
+
+
+<!--s4-->
+<!--<a href="https://iconscout.com/icons/menu" class="text-underline font-size-sm" target="_blank">Menu</a> by <a href="https://iconscout.com/contributors/eva-icons" class="text-underline font-size-sm" target="_blank">Akveo</a>-->
